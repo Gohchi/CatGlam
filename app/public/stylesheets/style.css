@@ -1,0 +1,24 @@
+body {
+  padding: 50px;
+  font: 14px "Small Fonts", "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(../images/bg_stars.gif);
+  color: white;
+}
+
+a {
+  color: #00B7FF;
+}
+
+div.logo{
+  text-align: center;
+}
+img.logo{
+  width: 300px;
+}
+
+h1.title1{
+  color: #fa74a5;
+  text-align: center;
+  font-family: Segoe print;
+  text-shadow: 0px -3px #3eb34d;
+}
