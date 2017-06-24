@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { 
     title: 'Cat Glam',
     logo: 'images/sleeping_cat.jpg'
- });
+  });
 });
 
 module.exports = router;
