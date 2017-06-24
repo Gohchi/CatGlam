@@ -1,29 +1,45 @@
 extends layout
 
 block content
-  div(id='wrapper' class='toggled')
-      div(id='sidebar-wrapper')
-          ul(class='sidebar-nav')
-              li(class='sidebar-brand')
-                  a(href='.') Inicio
-              li
-                  a Usuarios
-                  // (href='users')
+    div(id='wrapper' class='toggled')
+        div(id='sidebar-wrapper')
+            ul(class='sidebar-nav')
+                li(class='sidebar-brand')
+                    a(href='.') Inicio
+                li
+                    a(class='noselect') Usuarios
+                    // (href='users')
                   
-                  
-      div(id='page-content-wrapper')
-          div(class='container-fluid')
-              div(class='row')
-                  div(class='col-lg-12')
-                      a(href='#menu-toggle' class='btn btn-default' id='menu-toggle') Abrir menu
+    div(id='page-content-wrapper')
+        div(class='container-fluid')
+            div(class='row')
+                div(class='col-lg-12')
+                    a(href='#menu-toggle' class='btn btn-default' id='menu-toggle') Abrir menu
 
-                      h1.title1 #{title}
-                      div.logo
-                        img(src=logo).logo
-                      p Welcomes to #{title}
-
-                      p Make sure to keep all page content within the 
-                        code #page-content-wrapper
+                    h1.title1 #{title}
+                    div
+                        input(type='text' class='filter-input' onkeyup='filterList(this, this.parent)' placeholder='Search for names..')
+                        ul(class='data-list')
+                            li 
+                                a(class='header') A
+                            li 
+                                a Adele
+                            li 
+                                a Agnes
+                            li 
+                                a(class='header') B
+                            li 
+                                a Billy
+                            li 
+                                a Bob
+                            li 
+                                a(class='header') C
+                            li 
+                                a Calvin
+                            li 
+                                a Christina
+                            li 
+                                a Cindy
                       
     script(src='js/jquery.js')
 
@@ -31,8 +47,28 @@ block content
     script(src='js/bootstrap.min.js')
 
     script.
-      $('#menu-toggle').click(function(e) {
-          e.preventDefault();
-          $('#wrapper').toggleClass('toggled');
-      });
+        $('#menu-toggle').click(function(e) {
+            e.preventDefault();
+            $('#wrapper').toggleClass('toggled');
+        });
+        
+        function filterList(input){
+            // Declare variables
+            var filter, ul, li, a, i;
+            //- input = document.getElementsByClassName('filter-input')[0];
+            filter = input.value.toUpperCase();
+            ul = input.parentNode.querySelector('[class=data-list]');
+            // document.getElementsByClassName('data-list')[0];
+            li = ul.getElementsByTagName('li');
+
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
     script
